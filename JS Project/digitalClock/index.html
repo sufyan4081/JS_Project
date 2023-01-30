@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
     <style>
-        *{
+        * {
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
         }
-        .container{
+
+        .container {
             border: solid;
             height: 100vh;
             display: grid;
@@ -19,37 +21,41 @@
             align-items: center;
             background-image: url(organic.png);
             background-repeat: no-repeat;
-            background-size:cover;
+            background-size: cover;
             background-position: center;
-            
+
         }
-        .box{
-            /* border: 2px solid black; */
+
+        .box {
             width: 400px;
             height: 170px;
             display: grid;
             justify-content: center;
             align-content: center;
         }
-        .row{
+
+        .row {
             display: grid;
-            grid-template-columns: repeat(4,50px);
+            grid-template-columns: repeat(4, 50px);
             grid-gap: 30px;
         }
-        .row div{
+
+        .row div {
             box-shadow: 2px 2px 25px;
         }
-        .firstrow div{
+
+        .firstrow div {
             background-color: rgba(0, 0, 0, 0.821);
             height: 70px;
             width: 70px;
             margin-left: 1px;
             font-family: Arial, Helvetica, sans-serif;
         }
-        .secondrow div{
+
+        .secondrow div {
             color: aliceblue;
             text-align: center;
-            font-weight:lighter;
+            font-weight: lighter;
             background-color: rgba(0, 0, 0, 0.821);
             height: 20px;
             width: 72px;
@@ -57,78 +63,76 @@
         }
     </style>
 </head>
+
 <body onload="alert('Welcome To My Own Digital Clock')">
     <div class="container">
         <div class="box">
-        <div class="row firstrow">
-            <div id="item1"></div>
-            <div id="item2"></div>
-            <div id="item3"></div>
-            <div id="item4"></div>
-        </div>
-        <div class="row secondrow">
-            <div id="item1">Hours</div>
-            <div id="item2">Minutes</div>
-            <div id="item3">Seconds</div>
-            <div id="item4">Session</div>
-        </div>
+            <div class="row firstrow">
+                <div id="item1"></div>
+                <div id="item2"></div>
+                <div id="item3"></div>
+                <div id="item4"></div>
+            </div>
+            <div class="row secondrow">
+                <div id="item1">Hours</div>
+                <div id="item2">Minutes</div>
+                <div id="item3">Seconds</div>
+                <div id="item4">Session</div>
+            </div>
         </div>
     </div>
 
-
     <script>
-        function myClock(){
-        let obj = new Date();
-        let hh = obj.getHours();
-        let min = obj.getMinutes();
-        let ss = obj.getSeconds();
-        let session = 'AM'
+        function myClock() {
+            let obj = new Date();
+            let hh = obj.getHours();
+            let min = obj.getMinutes();
+            let ss = obj.getSeconds();
+            let session = 'AM'
 
-        if(hh == 0)
-        {
-            hh = 12;
+            if (hh == 0) {
+                hh = 12;
+            }
+            if (hh > 12) {
+                hh = hh - 12;
+                session = 'PM'
+            }
+
+            hh = (hh < 10) ? `0${hh}` : `${hh}`;
+            min = (min < 10) ? `0${min}` : `${min}`;
+            ss = (ss < 10) ? `0${ss}` : `${ss}`;
+
+            let xh = document.getElementById('item1');
+            xh.innerHTML = hh;
+            xh.style.color = 'white'
+            xh.style.fontSize = '50px'
+            xh.style.textAlign = 'center'
+            xh.style.paddingTop = '6px'
+
+            let xm = document.getElementById('item2');
+            xm.innerHTML = min;
+            xm.style.color = 'white'
+            xm.style.fontSize = '50px'
+            xm.style.textAlign = 'center'
+            xm.style.paddingTop = '6px'
+
+            let xs = document.getElementById('item3');
+            xs.innerHTML = ss;
+            xs.style.color = 'white'
+            xs.style.fontSize = '50px'
+            xs.style.textAlign = 'center'
+            xs.style.paddingTop = '6px'
+
+            let xss = document.getElementById('item4');
+            xss.innerHTML = session;
+            xss.style.color = 'white'
+            xss.style.fontSize = '40px'
+            xss.style.textAlign = 'center'
+            xss.style.paddingTop = '10px'
         }
-        if( hh > 12)
-        {
-            hh = hh - 12;
-            session = 'PM'
-        }
-        
-         hh = (hh < 10) ? `0${hh}` : `${hh}`;
-         min = (min < 10) ? `0${min}` : `${min}`;
-         ss = (ss < 10) ? `0${ss}` : `${ss}`;
-    
-        let xh = document.getElementById('item1');
-        xh.innerHTML = hh;
-        xh.style.color = 'white'
-        xh.style.fontSize = '50px'
-        xh.style.textAlign = 'center'
-        xh.style.paddingTop = '6px'
-
-        let xm = document.getElementById('item2');
-        xm.innerHTML = min;
-        xm.style.color = 'white'
-        xm.style.fontSize = '50px'
-        xm.style.textAlign = 'center'
-        xm.style.paddingTop = '6px'
-
-        let xs = document.getElementById('item3');
-        xs.innerHTML = ss;
-        xs.style.color = 'white'
-        xs.style.fontSize = '50px'
-        xs.style.textAlign = 'center'
-        xs.style.paddingTop = '6px'
-
-        let xss = document.getElementById('item4');
-        xss.innerHTML = session;
-        xss.style.color = 'white'
-        xss.style.fontSize = '40px'
-        xss.style.textAlign = 'center'
-        xss.style.paddingTop = '10px'
-
-    }
-    myClock()
-    setInterval('myClock()',1000)
+        myClock()
+        setInterval('myClock()', 1000)
     </script>
 </body>
+
 </html>
