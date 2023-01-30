@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        .container h1, p{
+            text-align: center;
+            margin: 20px;
+        }
+        #dt {
+            height: auto;
+            width: 280px;
+            text-align: center;
+            margin: auto;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        ul li {
+            padding: 10px;
+            border: 2px solid whitesmoke;
+            list-style: none;
+        }
+        a{
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Nass Technologies <span id="s-23">2023</span></h1>
+        <p><a href="https://www.nasstechnologies.com/" target="_blank">MERN STACK BATCH</a></p>
+        <div id="dt" onload="currentDate_Time()"></div>
+
+        <!-- <h3 id="hi">hii</h3> -->
+        <ul>
+            <li class="done">HTML Done</li>
+            <li>CSS Done</li>
+            <li>Javascript Done</li>
+            <li>Boostrap Done</li>
+            <li>React Ongoing</li>
+            <li>Node Coming</li>
+            <li>Mongo DB Coming</li>
+            <li>Express JS Coming</li>
+        </ul>
+    </div>
+
+    <script>
+        let span_23 = document.getElementById('s-23');
+        span_23.style.fontSize = '60px';
+        span_23.style.color = 'grey'
+
+        let i = 0;
+        let color_arr = ['red', 'green', 'blue', 'yellow', 'violet', 'aqua']
+
+        setInterval(() => {
+            span_23.style.color = color_arr[i];
+            i++;
+            if(i == 5){
+                i = 0;
+            }
+
+        }, 1000);
+
+
+        // digital clock
+        function currentDate_Time() {
+            let obj = new Date();
+            let mm = obj.getMonth()+1;
+            let dd = obj.getDate();
+            let yy = obj.getFullYear();
+            let hh = obj.getHours();
+            let min = obj.getMinutes();
+            let ss = obj.getSeconds();
+            let session = 'AM';
+            
+            if (hh === 0) {
+                hh = 12;
+            }
+            if (hh > 12) {
+                hh = hh - 12;
+                session = 'PM'
+            }
+            hh = (hh < 10) ? `0${hh}` : `${hh}`;
+            min = (min < 10) ? `0${min}` : `${min}`;
+            ss = (ss < 10) ? `0${ss}` : `${ss}`;
+            
+            
+            switch(mm){
+                    case 1:
+                    mm = 'Jan';
+                    break;
+
+                    case 2:
+                    mm = 'Feb';
+                    break;
+                    
+                    case 3:
+                    mm = 'Mar';
+                    break;
+                    
+                    case 4:
+                    mm = 'Apr';
+                    break;
+
+                    case 5:
+                    mm = 'May';
+                    break;
+
+                    case 6:
+                    mm = 'Jun';
+                    break;
+
+                    case 7:
+                    mm = 'Jul';
+                    break;
+
+                    case 8:
+                    mm = 'Aug';
+                    break;
+
+                    case 9:
+                    mm = 'Sep';
+                    break;
+
+                    case 10:
+                    mm = 'Oct';
+                    break;
+
+                    case 11:
+                    mm = 'Nov';
+                    break;
+
+                    case 12:
+                    mm = 'Dec';
+                    break;
+
+                    default:
+                        mm = mm;
+                        break;
+                }
+
+                let time = `${mm} ${dd}, ${yy} ${hh}:${min}:${ss} ${session}`;
+                return time;
+            }
+
+        setInterval(() => {
+            document.getElementById('dt').innerHTML = currentDate_Time();
+        }, 1000);
+
+
+
+        // clock bcg color change
+        function getRandomColor() {
+            let str = '0123456789ABCDEF';
+            let hex = '#';
+            for (let i = 0; i < 6; i++) {
+                hex += str.charAt(Math.floor(Math.random() * 16));
+            }
+            return hex;
+        }
+      
+        function bcgColor(){
+          document.getElementById('dt').style.backgroundColor = getRandomColor();
+      }
+      setInterval(bcgColor,1000)
+
+
+
+
+
+
+        // course part start
+    //    let x = document.getElementById('hi');
+    //    if(x.matches('hii')){
+    //     x.style.backgroundColor = 'red';
+    //    }
+    //    else{
+    //     console.log('no')
+    //    }
+       
+    </script>
+</body>
+
+</html>
