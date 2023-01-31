@@ -11,10 +11,13 @@
             padding: 0px;
             margin: 0px;
         }
-        .container h1, p{
+
+        .container h1,
+        p {
             text-align: center;
             margin: 20px;
         }
+
         #dt {
             height: auto;
             width: 280px;
@@ -24,12 +27,14 @@
             color: white;
             margin-bottom: 20px;
         }
+
         ul li {
             padding: 10px;
             border: 2px solid whitesmoke;
             list-style: none;
         }
-        a{
+
+        a {
             color: black;
         }
     </style>
@@ -41,20 +46,20 @@
         <p><a href="https://www.nasstechnologies.com/" target="_blank">MERN STACK BATCH</a></p>
         <div id="dt" onload="currentDate_Time()"></div>
 
-        <!-- <h3 id="hi">hii</h3> -->
         <ul>
             <li class="done">HTML Done</li>
             <li>CSS Done</li>
             <li>Javascript Done</li>
             <li>Boostrap Done</li>
-            <li>React Ongoing</li>
-            <li>Node Coming</li>
-            <li>Mongo DB Coming</li>
+            <li>React JS Ongoing</li>
+            <li>Node JS Coming</li>
             <li>Express JS Coming</li>
+            <li>Mongo DB Coming</li>
         </ul>
     </div>
 
     <script>
+        // 2023 year color start
         let span_23 = document.getElementById('s-23');
         span_23.style.fontSize = '60px';
         span_23.style.color = 'grey'
@@ -65,24 +70,24 @@
         setInterval(() => {
             span_23.style.color = color_arr[i];
             i++;
-            if(i == 5){
+            if (i == 5) {
                 i = 0;
             }
-
         }, 1000);
+        // 2023 year color start
 
 
-        // digital clock
+        // digital clock timing part start
         function currentDate_Time() {
             let obj = new Date();
-            let mm = obj.getMonth()+1;
+            let mm = obj.getMonth() + 1;
             let dd = obj.getDate();
             let yy = obj.getFullYear();
             let hh = obj.getHours();
             let min = obj.getMinutes();
             let ss = obj.getSeconds();
             let session = 'AM';
-            
+
             if (hh === 0) {
                 hh = 12;
             }
@@ -93,73 +98,72 @@
             hh = (hh < 10) ? `0${hh}` : `${hh}`;
             min = (min < 10) ? `0${min}` : `${min}`;
             ss = (ss < 10) ? `0${ss}` : `${ss}`;
-            
-            
-            switch(mm){
-                    case 1:
+
+            switch (mm) {
+                case 1:
                     mm = 'Jan';
                     break;
 
-                    case 2:
+                case 2:
                     mm = 'Feb';
                     break;
-                    
-                    case 3:
+
+                case 3:
                     mm = 'Mar';
                     break;
-                    
-                    case 4:
+
+                case 4:
                     mm = 'Apr';
                     break;
 
-                    case 5:
+                case 5:
                     mm = 'May';
                     break;
 
-                    case 6:
+                case 6:
                     mm = 'Jun';
                     break;
 
-                    case 7:
+                case 7:
                     mm = 'Jul';
                     break;
 
-                    case 8:
+                case 8:
                     mm = 'Aug';
                     break;
 
-                    case 9:
+                case 9:
                     mm = 'Sep';
                     break;
 
-                    case 10:
+                case 10:
                     mm = 'Oct';
                     break;
 
-                    case 11:
+                case 11:
                     mm = 'Nov';
                     break;
 
-                    case 12:
+                case 12:
                     mm = 'Dec';
                     break;
 
-                    default:
-                        mm = mm;
-                        break;
-                }
-
-                let time = `${mm} ${dd}, ${yy} ${hh}:${min}:${ss} ${session}`;
-                return time;
+                default:
+                    mm = obj.getMonth() + 1;
+                    break;
             }
+
+            let time = `${mm} ${dd}, ${yy} ${hh}:${min}:${ss} ${session}`;
+            return time;
+        }
 
         setInterval(() => {
             document.getElementById('dt').innerHTML = currentDate_Time();
         }, 1000);
+        // digital clock timing part end
 
 
-
-        // clock bcg color change
+        // clock bcg color change start
         function getRandomColor() {
             let str = '0123456789ABCDEF';
             let hex = '#';
@@ -168,26 +172,28 @@
             }
             return hex;
         }
-      
-        function bcgColor(){
-          document.getElementById('dt').style.backgroundColor = getRandomColor();
-      }
-      setInterval(bcgColor,1000)
 
-
-
-
+        function bcgColor() {
+            document.getElementById('dt').style.backgroundColor = getRandomColor();
+        }
+        setInterval(bcgColor, 1000)
+        // clock bcg color change end
 
 
         // course part start
-    //    let x = document.getElementById('hi');
-    //    if(x.matches('hii')){
-    //     x.style.backgroundColor = 'red';
-    //    }
-    //    else{
-    //     console.log('no')
-    //    }
-       
+        let colors = document.querySelectorAll('li');
+        colors.forEach((l, i) => {
+            if (l.textContent.endsWith("Done")) {
+                colors[i].style.backgroundColor = 'lightBlue';
+            }
+            if (l.textContent.endsWith('Ongoing')) {
+                colors[i].style.backgroundColor = 'yellow';
+            }
+            if (l.textContent.endsWith('Coming')) {
+                colors[i].style.backgroundColor = 'pink';
+            }
+        })
+         // course part end
     </script>
 </body>
 
